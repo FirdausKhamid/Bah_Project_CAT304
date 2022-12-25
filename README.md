@@ -21,7 +21,7 @@ Features
 1) Create another .dart file for your own page/features/class. 
 2) Navigate the buttons(in main.dart) to your class/page.
 3) Push into GitHub
-Reference GitHub Tutorial: https://www.youtube.com/watch?v=3Tn58KQvWtU
+Reference GitHub Tutorial: https://www.youtube.com/watch?v=3Tn58KQvWtU or Read here https://kbroman.org/github_tutorial/pages/fork.html
 
 ### Images must be declared : (How?)
 1) Add images in flutterui>assets file 
