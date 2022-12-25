@@ -1,15 +1,33 @@
-# flutterui
 
-A new Flutter project.
 
-## Getting Started
+# Getting Started
 
-This project is a starting point for a Flutter application.
+This project is a starting point for a Bah : Flood Alert Application. 
+Features
+1) Flood Tracker
+2) Flood Info - Tips/Channels 
+3) Flood Report/SOS
+4) Nearest PPS Tracker
 
-A few resources to get you started if this is your first Flutter project:
+## Internal Instruction :
+### To run this, 
+1) Pull this file to your repository
+2) Open it in VS code
+3) Navigate main.dart
+4) Choose device on the bottom blue bar of VS Code and an emulator (Installed through Android Studios Nexus 6 recommended)
+5) Once emulator ready, Run the main.dart with debugging. 
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### To do your part :  
+1) Create another .dart file for your own page/features/class. 
+2) Navigate the buttons(in main.dart) to your class/page.
+3) Push into GitHub
+Reference GitHub Tutorial: https://www.youtube.com/watch?v=3Tn58KQvWtU
+
+### Images must be declared : (How?)
+1) Add images in flutterui>assets file 
+2) Declare new assets in flutterui>pubspec.yaml file by adding -assets/[imaganame].png
+
+
 
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
