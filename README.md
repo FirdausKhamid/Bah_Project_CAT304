@@ -11,11 +11,13 @@ Features
 
 ## Internal Instruction :
 ### To run this, 
-1) Pull this file to your repository
+1) Fork(top right button) this repo using your GitHub acc then Pull this file to your repository
 2) Open it in VS code
 3) Navigate main.dart
 4) Choose device on the bottom blue bar of VS Code and an emulator (Installed through Android Studios Nexus 6 recommended)
 5) Once emulator ready, Run the main.dart with debugging. 
+Reference GitHub Tutorial: https://www.youtube.com/watch?v=3Tn58KQvWtU or Read here https://kbroman.org/github_tutorial/pages/fork.html
+
 
 ### To do your part :  
 1) Create another .dart file for your own page/features/class. 
