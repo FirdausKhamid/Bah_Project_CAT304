@@ -99,6 +99,9 @@ assets:
   - assets/homebutton.png
   - assets/hotspot.png
   - assets/relocationcentre.png
-  - assets/donate
+  - assets/donate.png
+  - assets/preflood.png
+  - assets/flood.png
+  - assets/postflood.png
 
 

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'screens/general/floodtips.dart';
+import 'screens/bottom_menu.dart';
+import 'screens/home_button.dart';
 
 /* OVERALL NOTES 
 
@@ -86,6 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     width: 300,
                     height: 300,
                     child: FloatingActionButton.large(
+                        heroTag: "btn1",
                         onPressed: () {
                           debugPrint('Pressed Notification');
                         },
@@ -113,24 +117,22 @@ class _MyHomePageState extends State<MyHomePage> {
                       onTap: () {
                         debugPrint('Pressed SOS');
                       },
-                      child: Container(
-                        child: Column(
-                          children: const [
-                            Center(
-                              child: Padding(
-                                padding: EdgeInsets.fromLTRB(0, 12, 0, 0),
-                                child: Text(
-                                  'SOS',
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
+                      child: Column(
+                        children: const [
+                          Center(
+                            child: Padding(
+                              padding: EdgeInsets.fromLTRB(0, 12, 0, 0),
+                              child: Text(
+                                'SOS',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     )),
               ),
@@ -224,6 +226,11 @@ class _MyHomePageState extends State<MyHomePage> {
                       padding: const EdgeInsets.fromLTRB(30, 0, 10, 60),
                       child: InkWell(
                         onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const FloodTipsPage()),
+                          );
                           debugPrint('Pressed Flood Tips');
                         },
                         child: Container(
@@ -261,7 +268,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: Color.fromARGB(255, 255, 255, 255),
+                              color: const Color.fromARGB(255, 255, 255, 255),
                               boxShadow: const [
                                 BoxShadow(
                                     blurStyle: BlurStyle.normal,
@@ -291,36 +298,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
 
       // Bottom Part
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
-            backgroundColor: Colors.black,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.info),
-            label: 'Home',
-            backgroundColor: Colors.black,
-          )
-        ],
-      ),
-      floatingActionButtonLocation:
-          FloatingActionButtonLocation.miniCenterDocked,
-      floatingActionButton: SizedBox(
-        height: 80,
-        width: 80,
-        child: FloatingActionButton(
-          onPressed: () {
-            debugPrint('Pressed Home');
-          },
-          backgroundColor: Colors.white,
-          child: Image.asset(
-            'assets/homebutton.png',
-            width: 400,
-          ),
-        ),
-      ),
+      bottomNavigationBar: const MyBottomMenuNavigationBar(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: const MyHomeButton(),
     );
   }
 }
