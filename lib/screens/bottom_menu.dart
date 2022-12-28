@@ -21,35 +21,10 @@ class _MyBottomNavigationBarState extends State<MyBottomMenuNavigationBar> {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.info),
-          label: 'Home',
+          label: 'Info',
           backgroundColor: Colors.black,
         )
       ],
     );
-    // floatingActionButtonLocation:
-    //     FloatingActionButtonLocation.miniCenterDocked,
-    // floatingActionButton: SizedBox(
-    //   height: 80,
-    //   width: 80,
-    //   child: FloatingActionButton(
-    //     heroTag: "btn2",
-    //     onPressed: () {
-    //       Navigator.push(
-    //         context,
-    //         MaterialPageRoute(
-    //             builder: (context) => const MyHomePage(
-    //                   title: 'Test',
-    //                 )),
-    //       );
-    //       debugPrint('Pressed Home');
-    //     },
-    //     backgroundColor: Colors.white,
-    //     child: Image.asset(
-    //       'assets/homebutton.png',
-    //       width: 400,
-    //     ),
-    //   ),
-    // )
-    //;
   }
 }
