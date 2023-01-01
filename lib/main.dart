@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterui/screens/general/pps/ppslocator.dart';
 import 'screens/general/floodtips.dart';
 import 'screens/bottom_menu.dart';
 import 'screens/home_button.dart';
@@ -180,6 +181,11 @@ class _MyHomePageState extends State<MyHomePage> {
                       padding: const EdgeInsets.fromLTRB(10, 0, 30, 30),
                       child: InkWell(
                         onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const PPSLocator()),
+                          );
                           debugPrint('Pressed Nearest PPS');
                         },
                         child: Container(
