@@ -3,6 +3,9 @@ import 'package:flutterui/screens/general/waterlevel.dart';
 import 'screens/general/floodtips.dart';
 import 'screens/bottom_menu.dart';
 import 'screens/home_button.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 /* OVERALL NOTES 
 
@@ -13,7 +16,13 @@ main.dart provides
 
 */
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  FirebaseDatabase db = FirebaseDatabase.instance;
+  DatabaseReference ref = FirebaseDatabase.instance.ref();
   runApp(const MyApp());
 }
 
