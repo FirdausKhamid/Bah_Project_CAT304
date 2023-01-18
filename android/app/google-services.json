@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "975896082403",
+    "firebase_url": "https://bah--application-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "bah--application",
+    "storage_bucket": "bah--application.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:975896082403:android:ded0c9e00f5d24c74912d6",
+        "android_client_info": {
+          "package_name": "com.example.flutterui"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "975896082403-rqofs18ifrhnheg8k6dd6m0bhicsarh9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBD3-7pE1YuGJ1wwUkMoo7DuQyDtWqkkvA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "975896082403-rqofs18ifrhnheg8k6dd6m0bhicsarh9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "975896082403-mc9ptv3fsnnj0hd74k8s6bab5cd779vf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterui"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

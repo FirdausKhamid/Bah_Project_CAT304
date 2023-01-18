@@ -4,6 +4,8 @@ import 'package:flutterui/screens/general/pps/ppslocator.dart';
 import 'screens/general/floodtips.dart';
 import 'screens/bottom_menu.dart';
 import 'screens/home_button.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 /* OVERALL NOTES 
 main.dart provides
@@ -12,31 +14,50 @@ main.dart provides
 - other pages or features shall use another dart file to keep it modular and manageable
 */
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  //initilization of Firebase app
+
+  // other Firebase service initialization
+
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
+  //const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        scaffoldBackgroundColor: const Color.fromRGBO(216, 233, 231, 1.0),
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Color.fromRGBO(1, 39, 72, 1.0),
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          scaffoldBackgroundColor: const Color.fromRGBO(216, 233, 231, 1.0),
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Color.fromRGBO(1, 39, 72, 1.0),
+          ),
         ),
-      ),
-      home: const MyHomePage(title: ''),
-    );
+        home: FutureBuilder(
+            future: _fbApp,
+            builder: (context, snapshot) {
+              if (snapshot.hasError) {
+                print('Error ${snapshot.error.toString()}');
+                return const Text('Erorr!');
+              } else if (snapshot.hasData) {
+                return MyHomePage();
+              } else {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            }));
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  // const MyHomePage({super.key, required this.title});
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -47,7 +68,7 @@ class MyHomePage extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final String title;
+  // final String title;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -68,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(0, 80, 0, 0),
                       child: Text(
-                        'You have 0 flood alert',
+                        'You have 2 flood alert',
                         textScaleFactor: 2,
                         maxLines: 1,
                         textAlign: TextAlign.center,

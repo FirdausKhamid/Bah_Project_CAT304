@@ -21,8 +21,8 @@ class _MyBottomNavigationBarState extends State<MyHomeButton> {
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => const MyHomePage(
-                      title: 'Test',
+                builder: (context) => MyHomePage(
+                    // title: 'Test',
                     )),
           );
           debugPrint('Pressed Home');
