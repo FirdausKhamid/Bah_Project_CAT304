@@ -114,7 +114,7 @@ class WaterLevel extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const Alert()),
+                    MaterialPageRoute(builder: (context) => Alert()),
                   );
                 },
                 child: Container(

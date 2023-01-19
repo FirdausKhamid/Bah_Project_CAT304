@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutterui/screens/general/waterlevel.dart';
-import 'package:flutterui/screens/general/pps/ppslocator.dart';
 import 'screens/general/floodtips.dart';
 import 'screens/bottom_menu.dart';
 import 'screens/home_button.dart';
@@ -193,35 +192,30 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 0, 30, 30),
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const PPSLocator()),
-                          );
-                          debugPrint('Pressed Nearest PPS');
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.white,
-                              boxShadow: const [
-                                BoxShadow(
-                                    blurStyle: BlurStyle.normal,
-                                    color: Colors.grey,
-                                    blurRadius: 7)
-                              ]),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Image.asset(
-                                  'assets/relocationcentre.png',
-                                  width: 90,
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(10, 0, 30, 30),
+                        child: InkWell(
+                          onTap: () {
+                            debugPrint('Pressed Nearest PPS');
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.white,
+                                boxShadow: const [
+                                  BoxShadow(
+                                      blurStyle: BlurStyle.normal,
+                                      color: Colors.grey,
+                                      blurRadius: 7)
+                                ]),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Image.asset(
+                                    'assets/relocationcentre.png',
+                                    width: 90,
+                                  ),
                                 ),
                                 const Text('Nearest PPS')
                               ],
