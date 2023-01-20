@@ -6,17 +6,22 @@ import 'package:flutterui/screens/general/normal.dart';
 import 'package:flutterui/screens/general/warning.dart';
 import 'package:flutterui/screens/home_button.dart';
 
-class WaterLevel extends StatelessWidget {
-  const WaterLevel({super.key});
+class WaterLevel extends StatefulWidget {
+  const WaterLevel({Key? key}) : super(key: key);
+
+  @override
+  WaterLevelState createState() => WaterLevelState();
+}
+
+class WaterLevelState extends State<WaterLevel> {
+  TextEditingController pointOfInterestController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
       backgroundColor: const Color.fromRGBO(1, 39, 72, 1.0),
-
-      body: Center(
-          child: Column(
+      body: ListView(
         children: [
           const Expanded(
             flex: 1,
@@ -43,7 +48,7 @@ class WaterLevel extends StatelessWidget {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 200, 0, 0),
+                      color: const Color.fromARGB(255, 200, 0, 0),
                       borderRadius: BorderRadius.circular(15)),
                   child: Row(
                     children: [
@@ -81,7 +86,7 @@ class WaterLevel extends StatelessWidget {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 211, 81, 0),
+                      color: Color.fromARGB(255, 213, 209, 0),
                       borderRadius: BorderRadius.circular(15)),
                   child: Row(
                     children: [
@@ -114,12 +119,12 @@ class WaterLevel extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Alert()),
+                    MaterialPageRoute(builder: (context) => const Alert()),
                   );
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 237, 233, 0),
+                      color: const Color.fromARGB(255, 211, 81, 0),
                       borderRadius: BorderRadius.circular(15)),
                   child: Row(
                     children: [
@@ -144,49 +149,77 @@ class WaterLevel extends StatelessWidget {
               ),
             ),
           ),
+          // Expanded(
+          //   flex: 2,
+          //   child: Padding(
+          //     padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+          //     child: InkWell(
+          //       onTap: () {
+          //         Navigator.push(
+          //           context,
+          //           MaterialPageRoute(builder: (context) => const NormalList()),
+          //         );
+          //       },
+          //       child: Container(
+          //         decoration: BoxDecoration(
+          //             color: Color.fromARGB(255, 0, 200, 0),
+          //             borderRadius: BorderRadius.circular(15)),
+          //         child: Row(
+          //           children: [
+          //             Padding(
+          //               padding: const EdgeInsets.all(8.0),
+          //               child: Image.asset(
+          //                 'assets/save.png',
+          //                 width: 80,
+          //               ),
+          //             ),
+          //             const Padding(
+          //               padding: EdgeInsets.fromLTRB(20, 8, 8, 8),
+          //               child: Text('NORMAL',
+          //                   textScaleFactor: 2,
+          //                   style: TextStyle(
+          //                     fontWeight: FontWeight.bold,
+          //                   )),
+          //             )
+          //           ],
+          //         ),
+          //       ),
+          //     ),
+          //   ),
+          // ),
           Expanded(
-            flex: 2,
+            flex: 1,
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
-              child: InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const Normal()),
-                  );
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 8, 177, 8),
-                      borderRadius: BorderRadius.circular(15)),
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image.asset(
-                          'assets/save.png',
-                          width: 80,
-                        ),
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(222, 5, 123, 119),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Column(
+                  children: [
+                    TextField(
+                      controller: pointOfInterestController,
+                      decoration: const InputDecoration(
+                        hintText: 'Enter your point of interest',
                       ),
-                      const Padding(
-                        padding: EdgeInsets.fromLTRB(20, 8, 8, 8),
-                        child: Text('NORMAL',
-                            textScaleFactor: 2,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            )),
-                      )
-                    ],
-                  ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        // Save the point of interest to your desired location
+                        // ignore: unused_local_variable
+                        String pointOfInterest = pointOfInterestController.text;
+                        // save the point of interest
+                      },
+                      child: const Text('Save'),
+                    ),
+                  ],
                 ),
               ),
             ),
           ),
-          Expanded(flex: 2, child: Container()),
         ],
-      )),
-
-      //Bottom Part
+      ),
       bottomNavigationBar: const MyBottomMenuNavigationBar(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: const MyHomeButton(),
