@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutterui/screens/bottom_menu.dart';
+import 'package:flutterui/screens/widgets/bottom_menu.dart';
 import 'package:flutterui/screens/general/alert.dart';
 import 'package:flutterui/screens/general/danger.dart';
 import 'package:flutterui/screens/general/normal.dart';
 import 'package:flutterui/screens/general/warning.dart';
-import 'package:flutterui/screens/home_button.dart';
+import 'package:flutterui/screens/widgets/home_button.dart';
 
 class WaterLevel extends StatelessWidget {
   const WaterLevel({super.key});
