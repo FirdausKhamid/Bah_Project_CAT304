@@ -6,11 +6,15 @@ import 'package:flutterui/screens/general/normal.dart';
 import 'package:flutterui/screens/general/warning.dart';
 import 'package:flutterui/screens/widgets/home_button.dart';
 
-class WaterLevel extends StatelessWidget {
-  const WaterLevel({super.key});
+class WaterLevel extends StatefulWidget {
+  @override
+  State<WaterLevel> createState() => _WaterLevelState();
+}
 
+class _WaterLevelState extends State<WaterLevel> {
   @override
   Widget build(BuildContext context) {
+    // print(ref);
     return Scaffold(
       appBar: AppBar(),
       backgroundColor: const Color.fromRGBO(1, 39, 72, 1.0),
@@ -76,7 +80,8 @@ class WaterLevel extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const Warning()),
+                    MaterialPageRoute(
+                        builder: (context) => const WarningList()),
                   );
                 },
                 child: Container(
@@ -114,7 +119,7 @@ class WaterLevel extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const Alert()),
+                    MaterialPageRoute(builder: (context) => const AlertList()),
                   );
                 },
                 child: Container(

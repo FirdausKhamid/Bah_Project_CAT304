@@ -175,7 +175,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const WaterLevel()),
+                                builder: (context) => WaterLevel()),
                           );
                           debugPrint('Pressed');
                         },
