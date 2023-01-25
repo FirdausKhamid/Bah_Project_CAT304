@@ -1,8 +1,8 @@
 // import 'dart:html';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterui/screens/bottom_menu.dart';
-import 'package:flutterui/screens/home_button.dart';
+import 'package:flutterui/screens/widgets/bottom_menu.dart';
+import 'package:flutterui/screens/widgets/home_button.dart';
 
 // class Alert extends StatelessWidget {
 //   const Alert({super.key});

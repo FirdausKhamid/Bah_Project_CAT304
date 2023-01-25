@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterui/screens/bottom_menu.dart';
-import 'package:flutterui/screens/home_button.dart';
+import 'package:flutterui/screens/widgets/bottom_menu.dart';
+import 'package:flutterui/screens/widgets/home_button.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class PPSLocator extends StatefulWidget {
