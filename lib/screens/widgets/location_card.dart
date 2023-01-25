@@ -5,12 +5,12 @@ class CardFb2 extends StatelessWidget {
   final String imageUrl;
   final Function() onPressed;
 
-  const CardFb2(
-      {required this.text,
-      required this.imageUrl,
-      required this.onPressed,
-      Key? key})
-      : super(key: key);
+  const CardFb2({
+    required this.text,
+    required this.imageUrl,
+    required this.onPressed,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

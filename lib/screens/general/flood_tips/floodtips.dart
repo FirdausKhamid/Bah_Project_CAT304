@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutterui/screens/widgets/bottom_menu.dart';
 import 'package:flutterui/screens/widgets/home_button.dart';
-import 'package:flutterui/screens/general/preflood.dart';
-import 'package:flutterui/screens/general/duringflood.dart';
-import 'package:flutterui/screens/general/postflood.dart';
+import 'package:flutterui/screens/general/flood_tips/preflood.dart';
+import 'package:flutterui/screens/general/flood_tips/duringflood.dart';
+import 'package:flutterui/screens/general/flood_tips/postflood.dart';
 
 class FloodTipsPage extends StatelessWidget {
   const FloodTipsPage({super.key});

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutterui/screens/general/waterlevel/report.dart';
 import 'package:flutterui/screens/widgets/bottom_menu.dart';
-import 'package:flutterui/screens/general/alert.dart';
-import 'package:flutterui/screens/general/danger.dart';
-import 'package:flutterui/screens/general/normal.dart';
-import 'package:flutterui/screens/general/warning.dart';
+import 'package:flutterui/screens/general/waterlevel/alert.dart';
+import 'package:flutterui/screens/general/waterlevel/danger.dart';
+import 'package:flutterui/screens/general/waterlevel/normal.dart';
+import 'package:flutterui/screens/general/waterlevel/warning.dart';
 import 'package:flutterui/screens/widgets/home_button.dart';
 
 class WaterLevel extends StatefulWidget {
@@ -187,7 +188,44 @@ class _WaterLevelState extends State<WaterLevel> {
               ),
             ),
           ),
-          Expanded(flex: 2, child: Container()),
+          Expanded(
+            flex: 2,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ReportList()),
+                  );
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 100, 164, 170),
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Image.asset(
+                          'assets/communityicon.png',
+                          width: 80,
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.fromLTRB(20, 8, 8, 8),
+                        child: Text('REPORT',
+                            textScaleFactor: 2,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            )),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       )),
 

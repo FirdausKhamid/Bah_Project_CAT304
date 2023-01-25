@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutterui/screens/general/waterlevel.dart';
+import 'package:flutterui/screens/general/waterlevel/waterlevel.dart';
 import 'package:flutterui/screens/general/pps/ppslocator.dart';
-import 'screens/general/floodtips.dart';
+import 'screens/general/flood_tips/floodtips.dart';
 import 'screens/widgets/bottom_menu.dart';
 import 'screens/widgets/home_button.dart';
 import 'package:firebase_core/firebase_core.dart';
