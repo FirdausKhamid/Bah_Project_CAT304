@@ -7,17 +7,16 @@ import 'package:flutterui/screens/general/warning.dart';
 import 'package:flutterui/screens/widgets/home_button.dart';
 
 class WaterLevel extends StatefulWidget {
-  const WaterLevel({Key? key}) : super(key: key);
-
   @override
-  WaterLevelState createState() => WaterLevelState();
+  State<WaterLevel> createState() => _WaterLevelState();
 }
 
-class WaterLevelState extends State<WaterLevel> {
-  TextEditingController pointOfInterestController = TextEditingController();
-
+class _WaterLevelState extends State<WaterLevel> {
   @override
   Widget build(BuildContext context) {
+    // print(ref);
+    // ignore: prefer_typing_uninitialized_variables
+    var pointOfInterestController;
     return Scaffold(
       appBar: AppBar(),
       backgroundColor: const Color.fromRGBO(1, 39, 72, 1.0),
@@ -81,7 +80,8 @@ class WaterLevelState extends State<WaterLevel> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const Warning()),
+                    MaterialPageRoute(
+                        builder: (context) => const WarningList()),
                   );
                 },
                 child: Container(
@@ -119,7 +119,7 @@ class WaterLevelState extends State<WaterLevel> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const Alert()),
+                    MaterialPageRoute(builder: (context) => const AlertList()),
                   );
                 },
                 child: Container(
