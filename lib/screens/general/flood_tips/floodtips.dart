@@ -1,32 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutterui/screens/widgets/bottom_menu.dart';
-import 'package:flutterui/screens/general/alert.dart';
-import 'package:flutterui/screens/general/danger.dart';
-import 'package:flutterui/screens/general/normal.dart';
-import 'package:flutterui/screens/general/warning.dart';
 import 'package:flutterui/screens/widgets/home_button.dart';
+import 'package:flutterui/screens/general/flood_tips/preflood.dart';
+import 'package:flutterui/screens/general/flood_tips/duringflood.dart';
+import 'package:flutterui/screens/general/flood_tips/postflood.dart';
 
-class WaterLevel extends StatefulWidget {
-  @override
-  State<WaterLevel> createState() => _WaterLevelState();
-}
-
-class _WaterLevelState extends State<WaterLevel> {
-  get pointOfInterestController => null;
+class FloodTipsPage extends StatelessWidget {
+  const FloodTipsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // print(ref);
     return Scaffold(
       appBar: AppBar(),
       backgroundColor: const Color.fromRGBO(1, 39, 72, 1.0),
-      body: ListView(
+
+      body: Center(
+          child: Column(
         children: [
           const Expanded(
             flex: 1,
             child: Padding(
               padding: EdgeInsets.all(8.0),
-              child: Text('Water Level',
+              child: Text('Flood Tips',
                   textScaleFactor: 2,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -42,25 +37,26 @@ class _WaterLevelState extends State<WaterLevel> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const Danger()),
+                    MaterialPageRoute(
+                        builder: (context) => const PreFloodTips()),
                   );
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 200, 0, 0),
+                      color: const Color.fromRGBO(245, 249, 248, 1),
                       borderRadius: BorderRadius.circular(15)),
                   child: Row(
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Image.asset(
-                          'assets/danger.png',
+                          'assets/preflood.png',
                           width: 80,
                         ),
                       ),
                       const Padding(
                         padding: EdgeInsets.fromLTRB(20, 8, 8, 8),
-                        child: Text('DANGER',
+                        child: Text('Pre-flood',
                             textScaleFactor: 2,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -81,25 +77,25 @@ class _WaterLevelState extends State<WaterLevel> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const WarningList()),
+                        builder: (context) => const DuringFloodTips()),
                   );
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 213, 209, 0),
+                      color: const Color.fromRGBO(245, 249, 248, 1),
                       borderRadius: BorderRadius.circular(15)),
                   child: Row(
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Image.asset(
-                          'assets/warning.png',
+                          'assets/flood.png',
                           width: 80,
                         ),
                       ),
                       const Padding(
                         padding: EdgeInsets.fromLTRB(20, 8, 8, 8),
-                        child: Text('WARNING',
+                        child: Text('During flood',
                             textScaleFactor: 2,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -119,25 +115,26 @@ class _WaterLevelState extends State<WaterLevel> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const AlertList()),
+                    MaterialPageRoute(
+                        builder: (context) => const PostFloodTips()),
                   );
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 211, 81, 0),
+                      color: const Color.fromRGBO(245, 249, 248, 1),
                       borderRadius: BorderRadius.circular(15)),
                   child: Row(
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Image.asset(
-                          'assets/alert.png',
+                          'assets/postflood.png',
                           width: 80,
                         ),
                       ),
                       const Padding(
                         padding: EdgeInsets.fromLTRB(20, 8, 8, 8),
-                        child: Text('ALERT',
+                        child: Text('Post-flood',
                             textScaleFactor: 2,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -149,77 +146,11 @@ class _WaterLevelState extends State<WaterLevel> {
               ),
             ),
           ),
-          Expanded(
-            flex: 2,
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
-              child: InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const NormalList()),
-                  );
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 0, 200, 0),
-                      borderRadius: BorderRadius.circular(15)),
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image.asset(
-                          'assets/save.png',
-                          width: 80,
-                        ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.fromLTRB(20, 8, 8, 8),
-                        child: Text('NORMAL',
-                            textScaleFactor: 2,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            )),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Expanded(
-            flex: 1,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Color.fromARGB(222, 5, 123, 119),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Column(
-                  children: [
-                    TextField(
-                      controller: pointOfInterestController,
-                      decoration: const InputDecoration(
-                        hintText: 'Enter your point of interest',
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        // Save the point of interest to your desired location
-                        // ignore: unused_local_variable
-                        String pointOfInterest = pointOfInterestController.text;
-                        // save the point of interest
-                      },
-                      child: const Text('Save'),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
+          Expanded(flex: 2, child: Container()),
         ],
-      ),
+      )),
+
+      //Bottom Part
       bottomNavigationBar: const MyBottomMenuNavigationBar(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: const MyHomeButton(),
