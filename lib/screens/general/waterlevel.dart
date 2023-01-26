@@ -12,11 +12,11 @@ class WaterLevel extends StatefulWidget {
 }
 
 class _WaterLevelState extends State<WaterLevel> {
+  get pointOfInterestController => null;
+
   @override
   Widget build(BuildContext context) {
     // print(ref);
-    // ignore: prefer_typing_uninitialized_variables
-    var pointOfInterestController;
     return Scaffold(
       appBar: AppBar(),
       backgroundColor: const Color.fromRGBO(1, 39, 72, 1.0),

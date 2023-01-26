@@ -1,5 +1,4 @@
-// ignore_for_file: avoid_print, override_on_non_overriding_member
-
+// ignore_for_file: avoid_print, override_on_non_overriding_member, non_constant_identifier_names
 import 'dart:convert';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
