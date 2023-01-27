@@ -1,8 +1,29 @@
-import 'dart:convert';
+// import 'dart:html';
 import 'package:firebase_database/firebase_database.dart';
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutterui/screens/widgets/bottom_menu.dart';
 import 'package:flutterui/screens/widgets/home_button.dart';
+
+// class Alert extends StatelessWidget {
+//   const Alert({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text('Location'),
+//       ),
+
+//       // Call the method to retrieve and display data from the database
+//       //body: _displayData(),
+
+//       bottomNavigationBar: const MyBottomMenuNavigationBar(),
+//       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+//       floatingActionButton: const MyHomeButton(),
+//     );
+//   }
+// }
 import 'package:flutterui/screens/widgets/location_card.dart';
 
 class AlertList extends StatefulWidget {
@@ -85,5 +106,22 @@ class AlertListState extends State<AlertList> {
         floatingActionButton: MyHomeButton(),
       );
     }
+  }
+
+  Stream<Map<String, List<String>>> getData() {
+    final databaseReference = FirebaseDatabase.instance.ref();
+    return databaseReference.onValue.map((event) {
+      if (event.snapshot.value != null) {
+        Map<dynamic, dynamic> values =
+            event.snapshot.value as Map<dynamic, dynamic>;
+        Map<String, List<String>> results = {};
+        values.forEach((key, value) {
+          results[key] = value;
+        });
+        return results;
+      } else {
+        return <String, List<String>>{};
+      }
+    });
   }
 }
