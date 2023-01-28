@@ -1,4 +1,7 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutterui/screens/widgets/bottom_menu.dart';
 import 'package:flutterui/screens/general/waterlevel/alert.dart';
 import 'package:flutterui/screens/general/waterlevel/danger.dart';
@@ -213,7 +216,7 @@ class _WaterLevelState extends State<WaterLevel> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   // Save the point of interest to your desired location
                   String pointOfInterest = _pointOfInterestController.text;
                   _pointsOfInterest.add(pointOfInterest);
