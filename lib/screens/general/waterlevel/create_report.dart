@@ -5,6 +5,7 @@ import 'package:flutter_geocoder/geocoder.dart';
 import 'package:flutterui/screens/general/waterlevel/location_model.dart';
 import 'package:flutterui/screens/widgets/gradient_button.dart';
 import 'package:flutterui/screens/general/waterlevel/location_page.dart';
+import 'package:flutterui/screens/general/waterlevel/report.dart';
 import 'package:flutterui/screens/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -41,11 +42,11 @@ class _CreateReportState extends State<CreateReport> {
   String locationMessage = 'Set Location';
   String? _currentAddress = 'No Location yet';
   Position? _currentPosition;
+  final _firebaseStorage = FirebaseStorage.instance;
 
   //  ==============  Upload image configuration ===========================
   Future getImage(ImageSource media) async {
     var img = await picker.pickImage(source: media);
-
     setState(() {
       image = img;
     });
@@ -163,7 +164,7 @@ class _CreateReportState extends State<CreateReport> {
   @override
   Widget build(BuildContext context) {
     final ref = referenceDatabase.ref('Report');
-    final _firebaseStorage = FirebaseStorage.instance;
+    String imageUrl = '';
 
     return Scaffold(
       appBar: AppBar(
@@ -248,15 +249,30 @@ class _CreateReportState extends State<CreateReport> {
                   padding: const EdgeInsets.all(8.0),
                   child: GradientButtonFb1(
                     text: 'Post',
-                    onPressed: () {
+                    onPressed: () async {
                       print('Dalam Ni Ha');
                       print((image?.path));
                       if (image != null) {
+                        String uniqueFileName =
+                            DateTime.now().millisecondsSinceEpoch.toString();
+                        Reference referenceRoot = _firebaseStorage.ref();
+                        Reference referenceDirImages =
+                            referenceRoot.child('images');
+                        Reference referenceImageToUpload =
+                            referenceDirImages.child(uniqueFileName);
+
+                        try {
+                          await referenceImageToUpload
+                              .putFile(File(image!.path));
+                          imageUrl =
+                              await referenceImageToUpload.getDownloadURL();
+                        } catch (error) {}
                         //Upload to Firebase
-                        var snapshot = _firebaseStorage
-                            .ref()
-                            .child('images/imageName')
-                            .putFile(File(image!.path));
+
+                        //var snapshot = _firebaseStorage
+                        //  .ref()
+                        //.child('images/')
+                        // .putFile(File(image!.path));
                         //   var downloadUrl = snapshot.ref.getDownloadURL();
                         //   setState(() {
                         //     // imageUrl = downloadUrl;
@@ -267,15 +283,21 @@ class _CreateReportState extends State<CreateReport> {
 
                       Map<String, String> students = {
                         'description': descController.text,
-                        'location': locationController.text,
+                        'location': _currentAddress.toString(),
                         'date': DateTime.now().toString(),
                         'title': reportTitleController.text,
+                        'img': imageUrl,
                       };
                       ref.push().set(students);
                       descController.clear();
-                      locationController.clear();
+                      //_currentAddress.clear();
                       dateController.clear();
                       reportTitleController.clear();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ReportList()),
+                      );
                     },
                   ),
                 ),
