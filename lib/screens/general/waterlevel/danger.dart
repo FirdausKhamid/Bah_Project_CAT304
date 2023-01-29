@@ -26,7 +26,7 @@ class DangerState extends State<Danger> {
   final ref = FirebaseDatabase.instance.ref();
   // ignore: non_constant_identifier_names
   Future<void> fetch_fb() async {
-    var snapshot = await ref.child('danger/-NMeIHYnSlx8Vj2BO33b/data/').get();
+    var snapshot = await ref.child('danger/data/').get();
     if (snapshot.exists) {
       print(snapshot.value);
       listlocations = jsonDecode(

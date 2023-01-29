@@ -25,7 +25,7 @@ class NormalListState extends State<NormalList> {
   final ref = FirebaseDatabase.instance.ref();
   // ignore: non_constant_identifier_names
   Future<void> fetch_fb() async {
-    var snapshot = await ref.child('normal/-NMjYUplAYSHKpj7eXL4/data/').get();
+    var snapshot = await ref.child('normal/data/').get();
     if (snapshot.exists) {
       print(snapshot.value);
       listlocations = jsonDecode(
@@ -65,7 +65,7 @@ class NormalListState extends State<NormalList> {
       }
       return Scaffold(
         appBar: AppBar(
-          title: const Text('Location'),
+          title: const Text('Location1'),
         ),
         body: ListView.builder(
             padding: const EdgeInsets.all(8),
