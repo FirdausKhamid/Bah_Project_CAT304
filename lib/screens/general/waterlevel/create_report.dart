@@ -293,11 +293,7 @@ class _CreateReportState extends State<CreateReport> {
                       //_currentAddress.clear();
                       dateController.clear();
                       reportTitleController.clear();
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const ReportList()),
-                      );
+                      Navigator.of(context).pop();
                     },
                   ),
                 ),
