@@ -23,7 +23,7 @@ class WarningListState extends State<WarningList> {
   @override
   final ref = FirebaseDatabase.instance.ref();
   Future<void> fetch_fb() async {
-    var snapshot = await ref.child('warning/-NLMu2H8A3WLG2r33Ntc/data/').get();
+    var snapshot = await ref.child('warning/data/').get();
     if (snapshot.exists) {
       print(snapshot.value);
       listlocations = jsonDecode(

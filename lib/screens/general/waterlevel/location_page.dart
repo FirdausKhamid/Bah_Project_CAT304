@@ -2,6 +2,8 @@
 // Non functional important resource. Please do not delete
 // Non functional important resource. Please do not delete
 
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:flutterui/screens/general/waterlevel/create_report.dart';
 import 'package:geolocator/geolocator.dart';

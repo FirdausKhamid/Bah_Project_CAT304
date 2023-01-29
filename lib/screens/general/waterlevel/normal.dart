@@ -25,7 +25,7 @@ class NormalListState extends State<NormalList> {
   final ref = FirebaseDatabase.instance.ref();
   // ignore: non_constant_identifier_names
   Future<void> fetch_fb() async {
-    var snapshot = await ref.child('normal').orderByKey().limitToLast(1).get();
+    var snapshot = await ref.child('normal/data/').get();
     if (snapshot.exists) {
       print(snapshot.value);
       listlocations = jsonDecode(
@@ -86,5 +86,22 @@ class NormalListState extends State<NormalList> {
         floatingActionButton: MyHomeButton(),
       );
     }
+  }
+
+  Stream<Map<String, List<String>>> getData() {
+    final databaseReference = FirebaseDatabase.instance.ref();
+    return databaseReference.onValue.map((event) {
+      if (event.snapshot.value != null) {
+        Map<dynamic, dynamic> values =
+            event.snapshot.value as Map<dynamic, dynamic>;
+        Map<String, List<String>> results = {};
+        values.forEach((key, value) {
+          results[key] = value;
+        });
+        return results;
+      } else {
+        return <String, List<String>>{};
+      }
+    });
   }
 }

@@ -1,4 +1,7 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutterui/screens/general/waterlevel/report.dart';
 import 'package:flutterui/screens/general/waterlevel/setpoint.dart';
 import 'package:flutterui/screens/widgets/bottom_menu.dart';
@@ -14,6 +17,8 @@ class WaterLevel extends StatefulWidget {
 }
 
 class _WaterLevelState extends State<WaterLevel> {
+  final _pointOfInterestController = TextEditingController();
+  List<String> _pointsOfInterest = [];
   @override
   Widget build(BuildContext context) {
     // print(ref);
@@ -230,13 +235,14 @@ class _WaterLevelState extends State<WaterLevel> {
           Expanded(
             flex: 4,
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
-              child: InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const SetPoint()),
-                  );
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  // Save the point of interest to your desired location
+                  String pointOfInterest = _pointOfInterestController.text;
+                  _pointsOfInterest.add(pointOfInterest);
+                  // save the point of interest
+                  print(pointOfInterest);
                 },
                 child: Container(
                   decoration: BoxDecoration(
