@@ -1,4 +1,5 @@
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_geocoder/geocoder.dart';
 import 'package:flutterui/screens/general/waterlevel/location_model.dart';
@@ -162,6 +163,8 @@ class _CreateReportState extends State<CreateReport> {
   @override
   Widget build(BuildContext context) {
     final ref = referenceDatabase.ref('Report');
+    final _firebaseStorage = FirebaseStorage.instance;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Post Report'),
@@ -183,6 +186,17 @@ class _CreateReportState extends State<CreateReport> {
                   ),
                 ),
                 // =================== AD ================================
+
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: MyInputTextField(
+                    inputController: descController,
+                    inputLabel: 'Description of Report',
+                    iconsImage: Icons.description,
+                    inputHintText: 'Describe the event',
+                  ),
+                ),
+
                 Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Center(
@@ -198,15 +212,6 @@ class _CreateReportState extends State<CreateReport> {
                       },
                       child: Text('ADDRESS: ${_currentAddress ?? ""}'),
                     )),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: MyInputTextField(
-                    inputController: descController,
-                    inputLabel: 'Description of Report',
-                    iconsImage: Icons.description,
-                    inputHintText: 'Describe the event',
-                  ),
-                ),
 
                 ElevatedButton(
                   onPressed: () {
@@ -233,7 +238,7 @@ class _CreateReportState extends State<CreateReport> {
                           ),
                         ),
                       )
-                    : Text(
+                    : const Text(
                         "No Image",
                         style: TextStyle(fontSize: 20),
                       ),
@@ -244,6 +249,22 @@ class _CreateReportState extends State<CreateReport> {
                   child: GradientButtonFb1(
                     text: 'Post',
                     onPressed: () {
+                      print('Dalam Ni Ha');
+                      print((image?.path));
+                      if (image != null) {
+                        //Upload to Firebase
+                        var snapshot = _firebaseStorage
+                            .ref()
+                            .child('images/imageName')
+                            .putFile(File(image!.path));
+                        //   var downloadUrl = snapshot.ref.getDownloadURL();
+                        //   setState(() {
+                        //     // imageUrl = downloadUrl;
+                        //   });
+                      } else {
+                        print('No Image Path Received');
+                      }
+
                       Map<String, String> students = {
                         'description': descController.text,
                         'location': locationController.text,

@@ -50,6 +50,9 @@ dependencies:
   flutter_geocoder: ^0.2.2-nullsafety
   geocoding: ^2.0.5
   provider: ^6.0.5
+  firebase_storage: ^11.0.10
+  permission_handler: ^10.2.0
+
 
   
 
