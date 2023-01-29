@@ -25,7 +25,7 @@ class _ReportListState extends State<ReportList> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const CreateReport()),
+                  MaterialPageRoute(builder: (context) => CreateReport()),
                 );
               },
             )

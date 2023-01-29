@@ -7,6 +7,7 @@ import 'screens/general/flood_tips/floodtips.dart';
 import 'screens/widgets/bottom_menu.dart';
 import 'screens/widgets/home_button.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 /* OVERALL NOTES 
 main.dart provides

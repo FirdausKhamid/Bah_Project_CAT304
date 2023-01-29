@@ -38,7 +38,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   dio: ^4.0.6
   flutter_polyline_points: ^1.0.0
-  
+  flutter_local_notifications: ^13.0.0
+  image_picker: ^0.8.6+1
+  geolocator: ^9.0.2  
 
   # Firebase Database 
   firebase_core: ^2.4.1
@@ -48,11 +50,14 @@ dependencies:
   # Location Packages
   geolocator: ^8.0.0
   geocoder: ^0.2.1
-  location: ^4.3.0
   google_maps_flutter: ^2.2.2
 
-  # Location Permission
-  permission_handler: ^8.2.7
+  location: ^4.4.0
+  flutter_geocoder: ^0.2.2-nullsafety
+  geocoding: ^2.0.5
+  provider: ^6.0.5
+  firebase_storage: ^11.0.10
+  permission_handler: ^10.2.0
 
 
 
