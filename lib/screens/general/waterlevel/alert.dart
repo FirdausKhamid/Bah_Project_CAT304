@@ -1,4 +1,6 @@
 // import 'dart:html';
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:firebase_database/firebase_database.dart';
 import 'dart:convert';
 import 'package:flutter/material.dart';
@@ -41,10 +43,9 @@ class AlertListState extends State<AlertList> {
   List<String> entries = [];
 
   //==================   Referencing Database =============================
-  @override
   final ref = FirebaseDatabase.instance.ref();
   Future<void> fetch_fb() async {
-    var snapshot = await ref.child('alert/-NLMu2HUmVb49WC_koX5/data/').get();
+    var snapshot = await ref.child('alert/data/').get();
     if (snapshot.exists) {
       print(snapshot.value);
       listlocations = jsonDecode(
@@ -82,7 +83,6 @@ class AlertListState extends State<AlertList> {
       for (String key in listlocation_string) {
         entries.add(key);
       }
-      ;
       return Scaffold(
         appBar: AppBar(
           title: const Text('Location'),
