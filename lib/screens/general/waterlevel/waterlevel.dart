@@ -49,7 +49,7 @@ class _WaterLevelState extends State<WaterLevel> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Danger()),
+                    MaterialPageRoute(builder: (context) => const Danger()),
                   );
                 },
                 child: Container(
