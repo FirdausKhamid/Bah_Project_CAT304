@@ -48,7 +48,6 @@ dependencies:
   firebase_database: ^10.0.9
 
   # Location Packages
-  geolocator: ^8.0.0
   geocoder: ^0.2.1
   google_maps_flutter: ^2.2.2
 
