@@ -207,13 +207,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       padding: const EdgeInsets.fromLTRB(10, 0, 30, 30),
                       child: InkWell(
                         onTap: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //       // Hello Testing Testing. Testing.
-                          //       // This is my latest push.
-                          //       builder: (context) => const PPSLocator()),
-                          // );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                // Hello Testing Testing. Testing.
+                                // This is my latest push.
+                                builder: (context) => PPSLocator()),
+                          );
                           debugPrint('Pressed Nearest PPS');
                         },
                         child: Container(

@@ -2,19 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutterui/screens/widgets/bottom_menu.dart';
 import 'package:flutterui/screens/widgets/home_button.dart';
 
-class Danger extends StatefulWidget {
-  const Danger({super.key});
+class PPSList extends StatelessWidget {
+  const PPSList({super.key});
 
-  @override
-  State<Danger> createState() => _DangerState();
-}
-
-class _DangerState extends State<Danger> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Location'),
+        title: const Text('PPS List'),
       ),
 
       // Contents Placeholder
