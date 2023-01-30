@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 // import 'package:flutterui/screens/widgets/bottom_menu.dart';
 // import 'package:flutterui/screens/widgets/home_button.dart';
@@ -22,7 +24,96 @@ class PPSLocator extends StatefulWidget {
 class _PPSLocatorState extends State<PPSLocator> {
   late GoogleMapController mapController;
 
+  // Variables
   Set<Marker> markers = {};
+  // List<dynamic> listlocations = [];
+  List<dynamic> locationsData = [];
+  bool _dataLoaded = false;
+  List<String> entries = [];
+  List<String> listlocation_string = [];
+
+  //==================   Referencing Database =============================
+  var ref = FirebaseDatabase.instance.ref();
+
+  //==================   Fetching Location Data =============================
+  // Fetch the data and store it in a list of locationsData only
+  Future<void> fetchLocationData() async {
+    DataSnapshot snapshot = await ref.child('location').get();
+
+    if (snapshot.exists) {
+      print(snapshot.value);
+
+      Map locationsData = snapshot.value as Map;
+
+      print('mommy');
+
+      locationsData['key'] = snapshot.key;
+      // return
+      showLocationData(locationsData: locationsData);
+
+      print("Saya nasi");
+      //print(listlocations);
+      //show datatype of the content in the listlocations
+      //print(listlocations.runtimeType);
+    } else {
+      print('NO ACCESS TO DATABASE');
+    }
+  }
+
+  Future<void> fetch_fb() async {
+    var snapshot = await ref.child('Report').get();
+    if (snapshot.exists) {
+      print(snapshot.value);
+      // listlocations = jsonDecode(
+      //     jsonEncode(snapshot.value)); // Passing JSON Data Into ListLocation
+      // // Converting Dynamic List Locations into String Listlocation | by Appending The Empty Nodes.
+      // setState(() {
+      //   for (String key in listlocations) {
+      //     listlocation_string.add(key);
+      //   }
+      //   print('List location string');
+      //   print(listlocation_string);
+      // });
+    } else {
+      print('NO ACCESS TO DATABASE');
+    }
+    setState(() {
+      _dataLoaded = true;
+    });
+  }
+
+// treat the listlocations as the PPS locations and show it as marker in the maps
+  void showLocationData({required Map locationsData}) {
+    print('pukimak');
+    locationsData.forEach((key, value) {
+      if (key != 'key') {
+        print(key);
+        print(value);
+        String latitudestr = value['latitude'];
+        String longitudestr = value['longitude'];
+        double latitude = double.parse(latitudestr);
+        double longitude = double.parse(longitudestr);
+        print(latitude);
+        print(longitude);
+
+        markers.add(Marker(
+          markerId: MarkerId(key),
+          icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
+          position: LatLng(latitude, longitude),
+        ));
+      }
+    });
+    // print(locationsData['latitude']);
+    // print(locationsData['longitude']);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // fetchLocationData();
+
+//fetch_fb();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +143,7 @@ class _PPSLocatorState extends State<PPSLocator> {
                     zoom: 11.0)));
 
             markers.clear();
+            fetchLocationData();
 
             markers.add(Marker(
               markerId: const MarkerId("userLocation"),
