@@ -64,6 +64,12 @@ dependencies:
   # Call phone numeber
   url_launcher: ^6.1.8
 
+  # PDF Viewer
+  # flutter_pdfview: ^1.0.0+10
+  # path_provider: any
+  # http: ^0.12.0+4
+
+
 
 
 
@@ -144,5 +150,10 @@ assets:
   - assets/jpam.png
   - assets/pdrm.png
   - assets/bomba.png
+  - assets/preflood_guide.png
+  - assets/duringflood_guide.png
+  - assets/postflood_guide.png
+
+
 
 
