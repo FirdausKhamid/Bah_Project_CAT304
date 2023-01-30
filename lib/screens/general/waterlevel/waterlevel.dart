@@ -17,8 +17,6 @@ class WaterLevel extends StatefulWidget {
 }
 
 class _WaterLevelState extends State<WaterLevel> {
-  final _pointOfInterestController = TextEditingController();
-  List<String> _pointsOfInterest = [];
   @override
   Widget build(BuildContext context) {
     // print(ref);
