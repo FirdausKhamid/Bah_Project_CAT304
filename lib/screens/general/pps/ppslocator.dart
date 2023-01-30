@@ -1,19 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:flutterui/screens/widgets/bottom_menu.dart';
-import 'package:flutterui/screens/widgets/home_button.dart';
+// import 'package:flutterui/screens/widgets/bottom_menu.dart';
+// import 'package:flutterui/screens/widgets/home_button.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class PPSLocator extends StatefulWidget {
-  const PPSLocator({super.key});
+  PPSLocator({super.key});
+
+  static const CameraPosition initialCameraPosition = CameraPosition(
+    target: LatLng(1.3521, 103.8198),
+    zoom: 11.0,
+  );
+
+  Set<Marker> userLocationMarker = {};
 
   @override
-  _PPSLocatorState createState() => _PPSLocatorState();
+  State<PPSLocator> createState() => _PPSLocatorState();
 }
 
 class _PPSLocatorState extends State<PPSLocator> {
   late GoogleMapController mapController;
-  Map<MarkerId, Marker> markers = {};
-  int _markerIdCounter = 1;
+
+  Set<Marker> markers = {};
 
   @override
   Widget build(BuildContext context) {
@@ -21,44 +30,72 @@ class _PPSLocatorState extends State<PPSLocator> {
       appBar: AppBar(
         title: const Text('PPS Locator'),
       ),
+
+      // Contents Placeholder
       body: GoogleMap(
-        onMapCreated: _onMapCreated,
-        initialCameraPosition: const CameraPosition(
-          target: LatLng(0, 0),
-          zoom: 2,
-        ),
-        markers: Set<Marker>.of(markers.values),
-        onTap: _addMarker,
+        initialCameraPosition: PPSLocator.initialCameraPosition,
+        markers: markers,
+        zoomControlsEnabled: false,
+        mapType: MapType.normal,
+        onMapCreated: (GoogleMapController controller) {
+          mapController = controller;
+        },
       ),
-      bottomNavigationBar: const MyBottomMenuNavigationBar(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: const MyHomeButton(),
+
+      floatingActionButton: FloatingActionButton.extended(
+          onPressed: () async {
+            Position position = await _determinePosition();
+
+            mapController.animateCamera(CameraUpdate.newCameraPosition(
+                CameraPosition(
+                    target: LatLng(position.latitude, position.longitude),
+                    zoom: 11.0)));
+
+            markers.clear();
+
+            markers.add(Marker(
+              markerId: const MarkerId("userLocation"),
+              position: LatLng(position.latitude, position.longitude),
+            ));
+
+            setState(() {});
+          },
+          label: const Text("Current Location"),
+          icon: const Icon(Icons.location_history)),
+
+      // bottomNavigationBar: MyBottomMenuNavigationBar(),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // floatingActionButton: MyHomeButton(),
     );
   }
 
-  void _onMapCreated(GoogleMapController controller) {
-    mapController = controller;
-  }
+  Future<Position> _determinePosition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
 
-  void _addMarker(LatLng latLng) {
-    final MarkerId markerId = MarkerId(_markerIdCounter.toString());
-    final Marker marker = Marker(
-      markerId: markerId,
-      position: latLng,
-      infoWindow: const InfoWindow(
-        title: 'Place',
-        snippet: 'Tap to view details',
-      ),
-      onTap: () => _showPlaceDetails(markerId),
-    );
-    setState(() {
-      markers[markerId] = marker;
-      _markerIdCounter++;
-    });
-  }
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
 
-  void _showPlaceDetails(MarkerId markerId) {
-    final Marker? marker = markers[markerId];
-    // Show the place details in a modal bottom sheet or something similar
+    if (!serviceEnabled) {
+      return Future.error('Location services are disabled.');
+    }
+
+    permission = await Geolocator.checkPermission();
+
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
+
+    Position position = await Geolocator.getCurrentPosition();
+
+    return position;
   }
 }
