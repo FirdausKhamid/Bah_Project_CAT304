@@ -1,3 +1,4 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterui/screens/widgets/bottom_menu.dart';
 import 'package:flutterui/screens/widgets/home_button.dart';
@@ -13,6 +14,7 @@ class _SetPointState extends State<SetPoint> {
   final TextEditingController _pointOfInterestController =
       TextEditingController();
   final List<String> _pointsOfInterest = [];
+  final ref = FirebaseDatabase.instance.ref();
 
   @override
   Widget build(BuildContext context) {
@@ -43,19 +45,16 @@ class _SetPointState extends State<SetPoint> {
                     // Save the point of interest to your desired location
                     String pointOfInterest = _pointOfInterestController.text;
                     _pointsOfInterest.add(pointOfInterest);
+
+                    ref
+                        .child("users")
+                        .set({"point_of_interest": pointOfInterest});
                     // save the point of interest
                     print(pointOfInterest);
                   },
                   child: const Text('Save'),
                 ),
               ),
-              // Container(
-              //   child: ListView.builder(
-              //       itemCount: _pointsOfInterest.length,
-              //       itemBuilder: (BuildContext context, int index) {
-              //         return Text(_pointsOfInterest[index]);
-              //       }),
-              // ),
             ],
           ),
         ),

@@ -238,11 +238,10 @@ class _WaterLevelState extends State<WaterLevel> {
               padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
               child: InkWell(
                 onTap: () {
-                  // Save the point of interest to your desired location
-                  String pointOfInterest = _pointOfInterestController.text;
-                  _pointsOfInterest.add(pointOfInterest);
-                  // save the point of interest
-                  print(pointOfInterest);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const SetPoint()),
+                  );
                 },
                 child: Container(
                   decoration: BoxDecoration(
