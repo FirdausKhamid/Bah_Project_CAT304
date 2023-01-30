@@ -111,13 +111,16 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: SizedBox(
                     width: 300,
                     height: 300,
-                    child: FloatingActionButton.large(
-                        heroTag: "btn1",
-                        onPressed: () {
-                          debugPrint('Pressed Notification');
-                        },
-                        backgroundColor: Colors.white,
-                        child: Image.asset('assets/BellIcon.png')),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                      child: FloatingActionButton.large(
+                          heroTag: "btn1",
+                          onPressed: () {
+                            debugPrint('Pressed Notification');
+                          },
+                          backgroundColor: Colors.white,
+                          child: Image.asset('assets/BellIcon.png')),
+                    ),
                   )),
                 )),
             Expanded(
@@ -129,7 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
 /* ################################################################## */
 
             Expanded(
-                flex: 8,
+                flex: 7,
                 child: GridView(
                   physics: const NeverScrollableScrollPhysics(),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -140,7 +143,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ), // Set Columns
                   children: [
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(30, 0, 10, 30),
+                      padding: const EdgeInsets.fromLTRB(30, 0, 10, 20),
                       child: InkWell(
                         onTap: () {
                           Navigator.push(
@@ -150,30 +153,33 @@ class _MyHomePageState extends State<MyHomePage> {
                           );
                           debugPrint('Pressed');
                         },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.white,
-                              boxShadow: const [
-                                BoxShadow(
-                                    blurStyle: BlurStyle.normal,
-                                    color: Colors.grey,
-                                    blurRadius: 7)
-                              ]),
-                          child: Column(
-                            children: [
-                              Image.asset(
-                                'assets/hotspot.png',
-                                width: 130,
-                              ),
-                              const Text('Flood Hotspot')
-                            ],
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.white,
+                                boxShadow: const [
+                                  BoxShadow(
+                                      blurStyle: BlurStyle.normal,
+                                      color: Colors.grey,
+                                      blurRadius: 7)
+                                ]),
+                            child: Column(
+                              children: [
+                                Image.asset(
+                                  'assets/hotspot.png',
+                                  width: 130,
+                                ),
+                                const Text('Flood Hotspot')
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 0, 30, 30),
+                      padding: const EdgeInsets.fromLTRB(10, 0, 30, 20),
                       child: InkWell(
                         onTap: () {
                           Navigator.push(
@@ -215,7 +221,7 @@ class _MyHomePageState extends State<MyHomePage> {
 // ***********************************************************************//
 
             Expanded(
-                flex: 8,
+                flex: 9,
                 child: GridView(
                   physics: const NeverScrollableScrollPhysics(),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -226,7 +232,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ), // Set Columns
                   children: [
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(30, 0, 10, 60),
+                      padding: const EdgeInsets.fromLTRB(30, 0, 10, 20),
                       child: InkWell(
                         onTap: () {
                           Navigator.push(
@@ -249,7 +255,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: Column(
                             children: const [
                               Padding(
-                                padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                                padding: EdgeInsets.fromLTRB(10, 25, 10, 10),
                                 child: Icon(
                                   Icons.tips_and_updates,
                                   size: 50,
@@ -263,7 +269,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 0, 30, 60),
+                      padding: const EdgeInsets.fromLTRB(10, 0, 30, 20),
                       child: InkWell(
                         onTap: () {
                           debugPrint('Pressed Donate');
@@ -282,7 +288,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             children: [
                               Padding(
                                 padding:
-                                    const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                                    const EdgeInsets.fromLTRB(10, 25, 10, 10),
                                 child: Image.asset(
                                   'assets/donate.png',
                                   width: 55,
@@ -303,7 +309,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // Bottom Part
       bottomNavigationBar: const MyBottomMenuNavigationBar(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: const MyHomeButton(),
+      floatingActionButton: MyHomeButton(),
     );
   }
 }
