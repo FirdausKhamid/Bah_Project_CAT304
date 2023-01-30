@@ -169,6 +169,27 @@ class _CreateReportState extends State<CreateReport> {
     final ref = referenceDatabase.ref('Report');
     String imageUrl = '';
 
+    Widget okButton = TextButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Thank you"),
+      content: Text("Your report is succesfully posted."),
+      actions: [
+        TextButton(
+          child: Text("OK"),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        )
+      ],
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Post Report'),
@@ -217,8 +238,9 @@ class _CreateReportState extends State<CreateReport> {
                         Printer();
                         _getCurrentPosition();
                         print('ADDRESS: ${_currentAddress ?? ""}');
+                     
                       },
-                      child: Text('ADDRESS: ${_currentAddress ?? ""}'),
+                      child: Text('Get Location'),
                     )),
 
                 ElevatedButton(
@@ -304,6 +326,23 @@ class _CreateReportState extends State<CreateReport> {
                       dateController.clear();
                       reportTitleController.clear();
                       Navigator.of(context).pop();
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return (AlertDialog(
+                              title: Text("Thank you"),
+                              content:
+                                  Text("Your report is succesfully posted."),
+                              actions: [
+                                TextButton(
+                                  child: Text("OK"),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                )
+                              ],
+                            ));
+                          });
                     },
                   ),
                 ),

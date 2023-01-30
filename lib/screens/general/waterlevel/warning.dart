@@ -63,7 +63,7 @@ class WarningListState extends State<WarningList> {
       }
       return Scaffold(
         appBar: AppBar(
-          title: const Text('Location'),
+          title: const Text('Warning'),
         ),
         body: ListView.builder(
             padding: const EdgeInsets.all(8),

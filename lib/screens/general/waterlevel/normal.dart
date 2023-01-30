@@ -65,7 +65,7 @@ class NormalListState extends State<NormalList> {
       }
       return Scaffold(
         appBar: AppBar(
-          title: const Text('Location1'),
+          title: const Text('Normal'),
         ),
         body: ListView.builder(
             padding: const EdgeInsets.all(8),

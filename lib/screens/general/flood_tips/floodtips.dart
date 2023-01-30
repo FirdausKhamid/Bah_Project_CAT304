@@ -11,17 +11,19 @@ class FloodTipsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text('Flood Tips'),
+      ),
       backgroundColor: const Color.fromRGBO(1, 39, 72, 1.0),
 
       body: Center(
           child: Column(
         children: [
           const Expanded(
-            flex: 1,
+            flex: 0,
             child: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text('Flood Tips',
+              padding: EdgeInsets.all(0),
+              child: Text('',
                   textScaleFactor: 2,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
