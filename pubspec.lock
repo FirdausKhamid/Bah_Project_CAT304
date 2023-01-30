@@ -216,13 +216,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_geocoder:
-    dependency: "direct main"
-    description:
-      name: flutter_geocoder
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.2.2-nullsafety"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -282,6 +275,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  geocoder:
+    dependency: "direct main"
+    description:
+      name: geocoder
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.1"
   geocoding:
     dependency: "direct main"
     description:
