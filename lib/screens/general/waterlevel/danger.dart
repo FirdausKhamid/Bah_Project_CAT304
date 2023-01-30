@@ -67,7 +67,7 @@ class DangerState extends State<Danger> {
 
       return Scaffold(
         appBar: AppBar(
-          title: const Text('Location'),
+          title: const Text('Danger'),
         ),
         body: ListView.builder(
             padding: const EdgeInsets.all(8),

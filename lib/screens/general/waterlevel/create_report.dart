@@ -1,7 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_geocoder/geocoder.dart';
+import 'package:geocoder/geocoder.dart';
 import 'package:flutterui/screens/general/waterlevel/location_model.dart';
 import 'package:flutterui/screens/widgets/gradient_button.dart';
 import 'package:flutterui/screens/general/waterlevel/location_page.dart';
@@ -14,6 +14,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+// import 'package:geocoder2/geocoder2.dart';
 
 // Passing Data Through Provider
 class CreateReport extends StatefulWidget {
@@ -30,6 +31,7 @@ class _CreateReportState extends State<CreateReport> {
   final locationController = TextEditingController();
   final dateController = TextEditingController();
   final descController = TextEditingController();
+
   String datetime = DateTime.now().toString();
   XFile? image;
   final ImagePicker picker = ImagePicker();
@@ -167,6 +169,27 @@ class _CreateReportState extends State<CreateReport> {
     final ref = referenceDatabase.ref('Report');
     String imageUrl = '';
 
+    Widget okButton = TextButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Thank you"),
+      content: Text("Your report is succesfully posted."),
+      actions: [
+        TextButton(
+          child: Text("OK"),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        )
+      ],
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Post Report'),
@@ -185,6 +208,8 @@ class _CreateReportState extends State<CreateReport> {
                     inputLabel: 'Report Title',
                     iconsImage: Icons.title,
                     inputHintText: '"roadblock due to flood..."',
+                    wordlimit: 28,
+                    linelimit: 1,
                   ),
                 ),
                 // =================== AD ================================
@@ -196,6 +221,8 @@ class _CreateReportState extends State<CreateReport> {
                     inputLabel: 'Description of Report',
                     iconsImage: Icons.description,
                     inputHintText: 'Describe the event',
+                    wordlimit: 179,
+                    linelimit: 3,
                   ),
                 ),
 
@@ -211,8 +238,9 @@ class _CreateReportState extends State<CreateReport> {
                         Printer();
                         _getCurrentPosition();
                         print('ADDRESS: ${_currentAddress ?? ""}');
+                     
                       },
-                      child: Text('ADDRESS: ${_currentAddress ?? ""}'),
+                      child: Text('Get Location'),
                     )),
 
                 ElevatedButton(
@@ -298,6 +326,23 @@ class _CreateReportState extends State<CreateReport> {
                       dateController.clear();
                       reportTitleController.clear();
                       Navigator.of(context).pop();
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return (AlertDialog(
+                              title: Text("Thank you"),
+                              content:
+                                  Text("Your report is succesfully posted."),
+                              actions: [
+                                TextButton(
+                                  child: Text("OK"),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                )
+                              ],
+                            ));
+                          });
                     },
                   ),
                 ),
