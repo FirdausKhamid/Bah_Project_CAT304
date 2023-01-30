@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutterui/screens/general//waterlevel/waterlevel.dart';
+import 'package:flutterui/screens/general/emergency/emergency_call.dart';
 import 'package:flutterui/screens/general/pps/ppslocator.dart';
 import 'screens/general/flood_tips/floodtips.dart';
 import 'screens/widgets/bottom_menu.dart';
@@ -266,12 +267,17 @@ class _MyHomePageState extends State<MyHomePage> {
                       padding: const EdgeInsets.fromLTRB(10, 0, 30, 60),
                       child: InkWell(
                         onTap: () {
-                          debugPrint('Pressed Donate');
+                          debugPrint('Pressed Emergency Call');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => EmergencyCall()),
+                          );
                         },
                         child: Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: const Color.fromARGB(255, 255, 255, 255),
+                              color: Colors.redAccent,
                               boxShadow: const [
                                 BoxShadow(
                                     blurStyle: BlurStyle.normal,
@@ -284,11 +290,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                 padding:
                                     const EdgeInsets.fromLTRB(10, 10, 10, 10),
                                 child: Image.asset(
-                                  'assets/donate.png',
+                                  'assets/emergencycall.png',
                                   width: 55,
                                 ),
                               ),
-                              const Text('Donate ')
+                              const Text(
+                                'Emergency Call',
+                                style: TextStyle(color: Colors.white),
+                              )
                             ],
                           ),
                         ),

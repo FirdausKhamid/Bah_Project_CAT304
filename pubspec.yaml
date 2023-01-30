@@ -55,6 +55,10 @@ dependencies:
   permission_handler: ^10.2.0
   intl: ^0.18.0
 
+  # Call phone numeber
+  url_launcher: ^6.1.8
+
+
 
   
 
@@ -128,5 +132,10 @@ assets:
   - assets/postflood.png
   - assets/location.png
   - assets/communityicon.png
+  - assets/MERS.png
+  - assets/NADMA.png
+  - assets/jpam.png
+  - assets/pdrm.png
+  - assets/bomba.png
 
 
