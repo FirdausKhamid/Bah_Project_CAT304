@@ -85,7 +85,7 @@ class AlertListState extends State<AlertList> {
       }
       return Scaffold(
         appBar: AppBar(
-          title: const Text('Location'),
+          title: const Text('Alert'),
         ),
         body: ListView.builder(
             padding: const EdgeInsets.all(8),
