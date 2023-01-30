@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterui/screens/general/flood_tips/donation.dart';
 import 'package:flutterui/screens/widgets/bottom_menu.dart';
 import 'package:flutterui/screens/widgets/home_button.dart';
 import 'package:flutterui/screens/general/flood_tips/preflood.dart';
@@ -148,7 +149,44 @@ class FloodTipsPage extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(flex: 2, child: Container()),
+          Expanded(
+            flex: 2,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => DonationPage()),
+                  );
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.greenAccent,
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Image.asset(
+                          'assets/donate.png',
+                          width: 80,
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.fromLTRB(20, 8, 8, 8),
+                        child: Text('Donation',
+                            textScaleFactor: 2,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            )),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          )
         ],
       )),
 
