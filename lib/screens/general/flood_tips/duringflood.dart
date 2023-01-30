@@ -11,9 +11,15 @@ class DuringFloodTips extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Tips During Flood'),
       ),
-
-      // Contents Placeholder
-
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/duringflood_guide.png"),
+                fit: BoxFit.cover)),
+        padding: EdgeInsets.only(top: 50.0),
+      ),
       bottomNavigationBar: MyBottomMenuNavigationBar(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: MyHomeButton(),

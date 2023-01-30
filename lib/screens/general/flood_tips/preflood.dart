@@ -11,6 +11,15 @@ class PreFloodTips extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Tips Before Flood'),
       ),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/preflood_guide.png"),
+                fit: BoxFit.cover)),
+        padding: EdgeInsets.only(top: 50.0),
+      ),
 
       // Contents PlaceHolder
 
