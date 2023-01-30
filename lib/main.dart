@@ -127,39 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 )),
 
 /* ################################################################## */
-            Expanded(
-              flex: 3,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(100, 10, 100, 0),
-                child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.red,
-                    ),
-                    child: InkWell(
-                      onTap: () {
-                        debugPrint('Pressed SOS');
-                      },
-                      child: Column(
-                        children: const [
-                          Center(
-                            child: Padding(
-                              padding: EdgeInsets.fromLTRB(0, 12, 0, 0),
-                              child: Text(
-                                'SOS',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    )),
-              ),
-            ),
+
             Expanded(
                 flex: 8,
                 child: GridView(

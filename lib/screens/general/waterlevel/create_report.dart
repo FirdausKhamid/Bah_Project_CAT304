@@ -12,6 +12,7 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 // Passing Data Through Provider
@@ -284,7 +285,10 @@ class _CreateReportState extends State<CreateReport> {
                       Map<String, String> students = {
                         'description': descController.text,
                         'location': _currentAddress.toString(),
-                        'date': DateTime.now().toString(),
+                        'date': DateFormat.yMd()
+                            .add_jms()
+                            .format(DateTime.now())
+                            .toString(),
                         'title': reportTitleController.text,
                         'img': imageUrl,
                       };
