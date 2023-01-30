@@ -238,7 +238,6 @@ class _CreateReportState extends State<CreateReport> {
                         Printer();
                         _getCurrentPosition();
                         print('ADDRESS: ${_currentAddress ?? ""}');
-                     
                       },
                       child: Text('Get Location'),
                     )),
@@ -310,7 +309,7 @@ class _CreateReportState extends State<CreateReport> {
                         print('No Image Path Received');
                       }
 
-                      Map<String, String> students = {
+                      Map<String, String> reportdata = {
                         'description': descController.text,
                         'location': _currentAddress.toString(),
                         'date': DateFormat.yMd()
@@ -320,7 +319,7 @@ class _CreateReportState extends State<CreateReport> {
                         'title': reportTitleController.text,
                         'img': imageUrl,
                       };
-                      ref.push().set(students);
+                      ref.push().set(reportdata);
                       descController.clear();
                       //_currentAddress.clear();
                       dateController.clear();

@@ -112,8 +112,8 @@ class _ReportListState extends State<ReportList> {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
             gradient: const LinearGradient(colors: [
-              Color.fromARGB(255, 0, 0, 0),
-              Color.fromARGB(255, 116, 9, 9)
+              Color.fromARGB(255, 20, 131, 183),
+              Color.fromARGB(255, 5, 79, 114)
             ])),
         child: Stack(
           children: [
