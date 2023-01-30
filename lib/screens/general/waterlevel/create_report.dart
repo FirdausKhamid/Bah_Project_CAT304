@@ -12,6 +12,7 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 // import 'package:geocoder2/geocoder2.dart';
 
@@ -30,6 +31,7 @@ class _CreateReportState extends State<CreateReport> {
   final locationController = TextEditingController();
   final dateController = TextEditingController();
   final descController = TextEditingController();
+
   String datetime = DateTime.now().toString();
   XFile? image;
   final ImagePicker picker = ImagePicker();
@@ -185,6 +187,8 @@ class _CreateReportState extends State<CreateReport> {
                     inputLabel: 'Report Title',
                     iconsImage: Icons.title,
                     inputHintText: '"roadblock due to flood..."',
+                    wordlimit: 28,
+                    linelimit: 1,
                   ),
                 ),
                 // =================== AD ================================
@@ -196,6 +200,8 @@ class _CreateReportState extends State<CreateReport> {
                     inputLabel: 'Description of Report',
                     iconsImage: Icons.description,
                     inputHintText: 'Describe the event',
+                    wordlimit: 179,
+                    linelimit: 3,
                   ),
                 ),
 
@@ -285,7 +291,10 @@ class _CreateReportState extends State<CreateReport> {
                       Map<String, String> students = {
                         'description': descController.text,
                         'location': _currentAddress.toString(),
-                        'date': DateTime.now().toString(),
+                        'date': DateFormat.yMd()
+                            .add_jms()
+                            .format(DateTime.now())
+                            .toString(),
                         'title': reportTitleController.text,
                         'img': imageUrl,
                       };

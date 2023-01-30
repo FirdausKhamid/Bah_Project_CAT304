@@ -220,7 +220,7 @@ class _WaterLevelState extends State<WaterLevel> {
                       ),
                       const Padding(
                         padding: EdgeInsets.fromLTRB(20, 8, 8, 8),
-                        child: Text('Report',
+                        child: Text('REPORT',
                             textScaleFactor: 2,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -235,14 +235,13 @@ class _WaterLevelState extends State<WaterLevel> {
           Expanded(
             flex: 4,
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  // Save the point of interest to your desired location
-                  String pointOfInterest = _pointOfInterestController.text;
-                  _pointsOfInterest.add(pointOfInterest);
-                  // save the point of interest
-                  print(pointOfInterest);
+              padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const SetPoint()),
+                  );
                 },
                 child: Container(
                   decoration: BoxDecoration(

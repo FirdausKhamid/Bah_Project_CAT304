@@ -9,14 +9,20 @@ class MyBottomMenuNavigationBar extends StatefulWidget {
 }
 
 class _MyBottomNavigationBarState extends State<MyBottomMenuNavigationBar> {
+  int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     // ignore: unnecessary_new
     return BottomNavigationBar(
+      currentIndex: currentIndex,
+      iconSize: 0,
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+      onTap: (index) => setState(() => currentIndex = index),
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: Icon(Icons.settings),
-          label: 'Settings',
+          icon: Icon(Icons.home),
+          label: 'Home',
           backgroundColor: Colors.black,
         ),
         BottomNavigationBarItem(
