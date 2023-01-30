@@ -5,13 +5,17 @@ class MyInputTextField extends StatelessWidget {
   final String inputLabel;
   final IconData iconsImage;
   final String inputHintText;
+  final int wordlimit;
+  final int linelimit;
 
   const MyInputTextField(
       {Key? key,
       required this.inputController,
       required this.inputLabel,
       required this.iconsImage,
-      required this.inputHintText})
+      required this.inputHintText,
+      required this.wordlimit,
+      required this.linelimit})
       : super(key: key);
 
   @override
@@ -45,11 +49,14 @@ class MyInputTextField extends StatelessWidget {
                 color: Colors.grey.withOpacity(.1)),
           ]),
           child: TextField(
+            maxLength: wordlimit,
+            maxLines: linelimit,
             controller: inputController,
             onChanged: (value) {},
             keyboardType: TextInputType.emailAddress,
             style: const TextStyle(fontSize: 14, color: Colors.black),
             decoration: InputDecoration(
+              counterText: '',
               label: Text(inputLabel),
               labelStyle: const TextStyle(color: primaryColor),
               prefixIcon: Icon(iconsImage),

@@ -30,6 +30,7 @@ class _CreateReportState extends State<CreateReport> {
   final locationController = TextEditingController();
   final dateController = TextEditingController();
   final descController = TextEditingController();
+
   String datetime = DateTime.now().toString();
   XFile? image;
   final ImagePicker picker = ImagePicker();
@@ -185,6 +186,8 @@ class _CreateReportState extends State<CreateReport> {
                     inputLabel: 'Report Title',
                     iconsImage: Icons.title,
                     inputHintText: '"roadblock due to flood..."',
+                    wordlimit: 28,
+                    linelimit: 1,
                   ),
                 ),
                 // =================== AD ================================
@@ -196,6 +199,8 @@ class _CreateReportState extends State<CreateReport> {
                     inputLabel: 'Description of Report',
                     iconsImage: Icons.description,
                     inputHintText: 'Describe the event',
+                    wordlimit: 179,
+                    linelimit: 3,
                   ),
                 ),
 
