@@ -8,6 +8,7 @@ import 'screens/widgets/bottom_menu.dart';
 import 'screens/widgets/home_button.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 /* OVERALL NOTES 
 main.dart provides
@@ -28,6 +29,7 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
+
   //const MyApp({super.key});
 
   // This widget is the root of your application.
@@ -77,6 +79,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final FirebaseMessaging messaging = FirebaseMessaging.instance;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
