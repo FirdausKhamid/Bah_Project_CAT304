@@ -45,13 +45,10 @@ class _PPSLocatorState extends State<PPSLocator> {
 
       Map locationsData = snapshot.value as Map;
 
-      print('mommy');
-
       locationsData['key'] = snapshot.key;
       // return
       showLocationData(locationsData: locationsData);
 
-      print("Saya nasi");
       //print(listlocations);
       //show datatype of the content in the listlocations
       //print(listlocations.runtimeType);
@@ -60,31 +57,30 @@ class _PPSLocatorState extends State<PPSLocator> {
     }
   }
 
-  Future<void> fetch_fb() async {
-    var snapshot = await ref.child('Report').get();
-    if (snapshot.exists) {
-      print(snapshot.value);
-      // listlocations = jsonDecode(
-      //     jsonEncode(snapshot.value)); // Passing JSON Data Into ListLocation
-      // // Converting Dynamic List Locations into String Listlocation | by Appending The Empty Nodes.
-      // setState(() {
-      //   for (String key in listlocations) {
-      //     listlocation_string.add(key);
-      //   }
-      //   print('List location string');
-      //   print(listlocation_string);
-      // });
-    } else {
-      print('NO ACCESS TO DATABASE');
-    }
-    setState(() {
-      _dataLoaded = true;
-    });
-  }
+  // Future<void> fetch_fb() async {
+  //   var snapshot = await ref.child('Report').get();
+  //   if (snapshot.exists) {
+  //     print(snapshot.value);
+  //     // listlocations = jsonDecode(
+  //     //     jsonEncode(snapshot.value)); // Passing JSON Data Into ListLocation
+  //     // // Converting Dynamic List Locations into String Listlocation | by Appending The Empty Nodes.
+  //     // setState(() {
+  //     //   for (String key in listlocations) {
+  //     //     listlocation_string.add(key);
+  //     //   }
+  //     //   print('List location string');
+  //     //   print(listlocation_string);
+  //     // });
+  //   } else {
+  //     print('NO ACCESS TO DATABASE');
+  //   }
+  //   setState(() {
+  //     _dataLoaded = true;
+  //   });
+  // }
 
 // treat the listlocations as the PPS locations and show it as marker in the maps
-  void showLocationData({required Map locationsData}) {
-    print('pukimak');
+  Future<void> showLocationData({required Map locationsData}) async {
     locationsData.forEach((key, value) {
       if (key != 'key') {
         print(key);
@@ -95,7 +91,6 @@ class _PPSLocatorState extends State<PPSLocator> {
         double longitude = double.parse(longitudestr);
         print(latitude);
         print(longitude);
-
         markers.add(Marker(
           markerId: MarkerId(key),
           icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
@@ -135,15 +130,13 @@ class _PPSLocatorState extends State<PPSLocator> {
 
       floatingActionButton: FloatingActionButton.extended(
           onPressed: () async {
+            markers.clear();
+            fetchLocationData();
             Position position = await _determinePosition();
-
             mapController.animateCamera(CameraUpdate.newCameraPosition(
                 CameraPosition(
                     target: LatLng(position.latitude, position.longitude),
                     zoom: 11.0)));
-
-            markers.clear();
-            fetchLocationData();
 
             markers.add(Marker(
               markerId: const MarkerId("userLocation"),
