@@ -141,163 +141,169 @@ class _SetPointState extends State<SetPoint> {
               borderRadius: BorderRadius.circular(15)),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Container(
-                  child: TextField(
-                    controller: _pointOfInterestController,
-                    decoration: const InputDecoration(
-                      hintText: 'Enter your point of interest',
+            child: SizedBox(
+              child: Center(
+                child: Column(
+                  children: [
+                    // Container(
+                    //   child: TextField(
+                    //     controller: _pointOfInterestController,
+                    //     decoration: const InputDecoration(
+                    //         //hintText: 'Enter your point of interest',
+                    //         ),
+                    //   ),
+                    // ),
+                    Container(
+                      padding: const EdgeInsets.all(8.0),
+                      child: DropdownButton<String>(
+                        value: _selectedPoint,
+                        items: const [
+                          DropdownMenuItem<String>(
+                            value: 'Johor',
+                            child: Text('Johor'),
+                          ),
+                          DropdownMenuItem<String>(
+                            value: 'Melaka',
+                            child: Text('Melaka'),
+                          ),
+                          DropdownMenuItem<String>(
+                            value: 'Pahang',
+                            child: Text('Pahang'),
+                          ),
+                          DropdownMenuItem<String>(
+                            value: 'Negeri Sembilan',
+                            child: Text('Negeri Sembilan'),
+                          ),
+                          DropdownMenuItem<String>(
+                            value: 'Selangor',
+                            child: Text('Selangor'),
+                          ),
+                          DropdownMenuItem<String>(
+                            value: 'Wilayah Persekutuan Kuala Lumpur',
+                            child: Text('Wilayah Persekutuan Kuala Lumpur'),
+                          ),
+                          DropdownMenuItem<String>(
+                            value: 'Wilayah Persekutuan Putrajaya',
+                            child: Text('Wilayah Persekutuan Putrajaya'),
+                          ),
+                          DropdownMenuItem<String>(
+                            value: 'Wilayah Persekutuan Labuan',
+                            child: Text('Wilayah Persekutuan Labuan'),
+                          ),
+                          DropdownMenuItem<String>(
+                            value: 'Perak',
+                            child: Text('Perak'),
+                          ),
+                          DropdownMenuItem<String>(
+                            value: 'Kelantan',
+                            child: Text('Kelantan'),
+                          ),
+                          DropdownMenuItem<String>(
+                            value: 'Terengganu',
+                            child: Text('Terengganu'),
+                          ),
+                          DropdownMenuItem<String>(
+                            value: 'Pulau Pinang',
+                            child: Text('Pulau Pinang'),
+                          ),
+                          DropdownMenuItem<String>(
+                            value: 'Kedah',
+                            child: Text('Kedah'),
+                          ),
+                          DropdownMenuItem<String>(
+                            value: 'Perlis',
+                            child: Text('Perlis'),
+                          ),
+                          DropdownMenuItem<String>(
+                            value: 'Sabah',
+                            child: Text('Sabah'),
+                          ),
+                          DropdownMenuItem<String>(
+                            value: 'Sarawak',
+                            child: Text('Sarawak'),
+                          )
+                        ],
+                        onChanged: (String? value) {
+                          setState(() {
+                            _selectedPoint = value!;
+                            _pointOfInterestController.text = value;
+                          });
+                        },
+                      ),
                     ),
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8.0),
-                  child: DropdownButton<String>(
-                    value: _selectedPoint,
-                    items: const [
-                      DropdownMenuItem<String>(
-                        value: 'Johor',
-                        child: Text('Johor'),
-                      ),
-                      DropdownMenuItem<String>(
-                        value: 'Melaka',
-                        child: Text('Melaka'),
-                      ),
-                      DropdownMenuItem<String>(
-                        value: 'Pahang',
-                        child: Text('Pahang'),
-                      ),
-                      DropdownMenuItem<String>(
-                        value: 'Negeri Sembilan',
-                        child: Text('Negeri Sembilan'),
-                      ),
-                      DropdownMenuItem<String>(
-                        value: 'Selangor',
-                        child: Text('Selangor'),
-                      ),
-                      DropdownMenuItem<String>(
-                        value: 'Wilayah Persekutuan Kuala Lumpur',
-                        child: Text('Wilayah Persekutuan Kuala Lumpur'),
-                      ),
-                      DropdownMenuItem<String>(
-                        value: 'Wilayah Persekutuan Putrajaya',
-                        child: Text('Wilayah Persekutuan Putrajaya'),
-                      ),
-                      DropdownMenuItem<String>(
-                        value: 'Wilayah Persekutuan Labuan',
-                        child: Text('Wilayah Persekutuan Labuan'),
-                      ),
-                      DropdownMenuItem<String>(
-                        value: 'Perak',
-                        child: Text('Perak'),
-                      ),
-                      DropdownMenuItem<String>(
-                        value: 'Kelantan',
-                        child: Text('Kelantan'),
-                      ),
-                      DropdownMenuItem<String>(
-                        value: 'Terengganu',
-                        child: Text('Terengganu'),
-                      ),
-                      DropdownMenuItem<String>(
-                        value: 'Pulau Pinang',
-                        child: Text('Pulau Pinang'),
-                      ),
-                      DropdownMenuItem<String>(
-                        value: 'Kedah',
-                        child: Text('Kedah'),
-                      ),
-                      DropdownMenuItem<String>(
-                        value: 'Perlis',
-                        child: Text('Perlis'),
-                      ),
-                      DropdownMenuItem<String>(
-                        value: 'Sabah',
-                        child: Text('Sabah'),
-                      ),
-                      DropdownMenuItem<String>(
-                        value: 'Sarawak',
-                        child: Text('Sarawak'),
-                      )
-                    ],
-                    onChanged: (String? value) {
-                      setState(() {
-                        _selectedPoint = value!;
-                        _pointOfInterestController.text = value;
-                      });
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ElevatedButton(
-                    onPressed: () async {
-                      // Save the point of interest to your desired location
-                      String pointOfInterest = _pointOfInterestController.text;
-                      _pointsOfInterest.add(pointOfInterest);
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          // Save the point of interest to your desired location
+                          String pointOfInterest =
+                              _pointOfInterestController.text;
+                          _pointsOfInterest.add(pointOfInterest);
 
-                      refer
-                          .child("users")
-                          .set({"point_of_interest": pointOfInterest});
-                      // save the point of interest
-                      print(pointOfInterest);
+                          refer
+                              .child("users")
+                              .set({"point_of_interest": pointOfInterest});
+                          // save the point of interest
+                          print(pointOfInterest);
 
-                      var androidPlatformChannelSpecs =
-                          const AndroidNotificationDetails(
-                        'your channel id',
-                        'your channel name',
-                        importance: Importance.max,
-                        priority: Priority.high,
-                      );
-                      var iOSPlatformChannelSpecifics =
-                          const DarwinNotificationDetails();
-                      DangerListlocation_string;
-                      var platformChannelSpecs = NotificationDetails(
-                        android: androidPlatformChannelSpecs,
-                        iOS: iOSPlatformChannelSpecifics,
-                      );
+                          var androidPlatformChannelSpecs =
+                              const AndroidNotificationDetails(
+                            'your channel id',
+                            'your channel name',
+                            importance: Importance.max,
+                            priority: Priority.high,
+                          );
+                          var iOSPlatformChannelSpecifics =
+                              const DarwinNotificationDetails();
+                          DangerListlocation_string;
+                          var platformChannelSpecs = NotificationDetails(
+                            android: androidPlatformChannelSpecs,
+                            iOS: iOSPlatformChannelSpecifics,
+                          );
 
-                      if (DangerListlocation_string.contains(pointOfInterest)) {
-                        await flutterLocalNotificationsPlugin.show(
-                          0,
-                          'Your POI is in great danger',
-                          'Your point of interest, "$pointOfInterest", was saved successfully.',
-                          platformChannelSpecs,
-                          payload: pointOfInterest,
-                        );
-                      } else if (WarningListlocation_string.contains(
-                          pointOfInterest)) {
-                        await flutterLocalNotificationsPlugin.show(
-                          1,
-                          'Your POI is in the warning zone.',
-                          'Your point of interest, "$pointOfInterest", was saved successfully.',
-                          platformChannelSpecs,
-                          payload: pointOfInterest,
-                        );
-                      } else if (AlertListlocation_string.contains(
-                          pointOfInterest)) {
-                        await flutterLocalNotificationsPlugin.show(
-                          2,
-                          'Your POI is in alerting situation zone.',
-                          'Your point of interest, "$pointOfInterest", was saved successfully.',
-                          platformChannelSpecs,
-                          payload: pointOfInterest,
-                        );
-                      } else {
-                        await flutterLocalNotificationsPlugin.show(
-                          3,
-                          'Your POI is in normal zone.',
-                          'Your point of interest, "$pointOfInterest", was saved successfully.',
-                          platformChannelSpecs,
-                          payload: pointOfInterest,
-                        );
-                      }
-                    },
-                    child: const Text('Save'),
-                  ),
+                          if (DangerListlocation_string.contains(
+                              pointOfInterest)) {
+                            await flutterLocalNotificationsPlugin.show(
+                              0,
+                              'Your POI is in great danger',
+                              'Your point of interest, "$pointOfInterest", was saved successfully.',
+                              platformChannelSpecs,
+                              payload: pointOfInterest,
+                            );
+                          } else if (WarningListlocation_string.contains(
+                              pointOfInterest)) {
+                            await flutterLocalNotificationsPlugin.show(
+                              1,
+                              'Your POI is in the warning zone.',
+                              'Your point of interest, "$pointOfInterest", was saved successfully.',
+                              platformChannelSpecs,
+                              payload: pointOfInterest,
+                            );
+                          } else if (AlertListlocation_string.contains(
+                              pointOfInterest)) {
+                            await flutterLocalNotificationsPlugin.show(
+                              2,
+                              'Your POI is in alerting situation zone.',
+                              'Your point of interest, "$pointOfInterest", was saved successfully.',
+                              platformChannelSpecs,
+                              payload: pointOfInterest,
+                            );
+                          } else {
+                            await flutterLocalNotificationsPlugin.show(
+                              3,
+                              'Your POI is in normal zone.',
+                              'Your point of interest, "$pointOfInterest", was saved successfully.',
+                              platformChannelSpecs,
+                              payload: pointOfInterest,
+                            );
+                          }
+                        },
+                        child: const Text('Save'),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
         ),

@@ -5,6 +5,7 @@ import 'package:flutterui/screens/general//waterlevel/waterlevel.dart';
 import 'package:flutterui/screens/general/emergency/emergency_call.dart';
 import 'package:flutterui/screens/general/pps/ppslocator.dart';
 import 'screens/general/flood_tips/floodtips.dart';
+import 'screens/general/waterlevel/setpoint.dart';
 import 'screens/widgets/bottom_menu.dart';
 import 'screens/widgets/home_button.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -97,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(0, 80, 0, 0),
                       child: Text(
-                        'You have 2 flood alert',
+                        'Welcome to Bah!',
                         textScaleFactor: 2,
                         maxLines: 1,
                         textAlign: TextAlign.center,
@@ -122,7 +123,11 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: FloatingActionButton.large(
                           heroTag: "btn1",
                           onPressed: () {
-                            debugPrint('Pressed Notification');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const SetPoint()),
+                            );
                           },
                           backgroundColor: Colors.white,
                           child: Image.asset('assets/BellIcon.png')),
