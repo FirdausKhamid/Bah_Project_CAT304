@@ -186,7 +186,40 @@ class FloodTipsPage extends StatelessWidget {
                 ),
               ),
             ),
-          )
+          ),
+          Expanded(
+            flex: 2,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+              child: InkWell(
+                onTap: () {},
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: const Color.fromRGBO(1, 39, 72, 1.0),
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Image.asset(
+                          'assets/preflood.png',
+                          width: 0,
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.fromLTRB(20, 8, 8, 8),
+                        child: Text('',
+                            textScaleFactor: 2,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            )),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       )),
 
