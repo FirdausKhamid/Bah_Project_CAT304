@@ -45,7 +45,7 @@ class _PPSLocatorState extends State<PPSLocator> {
 
       Map locationsData = snapshot.value as Map;
 
-      print('mommy');
+      print('hELLO');
 
       locationsData['key'] = snapshot.key;
       // return
@@ -84,7 +84,7 @@ class _PPSLocatorState extends State<PPSLocator> {
 
 // treat the listlocations as the PPS locations and show it as marker in the maps
   void showLocationData({required Map locationsData}) {
-    print('pukimak');
+    print('tunjuk');
     locationsData.forEach((key, value) {
       if (key != 'key') {
         print(key);
