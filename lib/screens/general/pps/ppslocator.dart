@@ -80,9 +80,8 @@ class _PPSLocatorState extends State<PPSLocator> {
   // }
 
 // treat the listlocations as the PPS locations and show it as marker in the maps
-
-  Future<void> showLocationData({required Map locationsData}) async {
-
+  void showLocationData({required Map locationsData}) {
+    print('pukimak');
     locationsData.forEach((key, value) {
       if (key != 'key') {
         print(key);
