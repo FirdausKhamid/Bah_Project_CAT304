@@ -56,7 +56,7 @@ class _EmergencyCallState extends State<EmergencyCall> {
       backgroundColor: const Color.fromRGBO(1, 39, 72, 1.0),
 
       body: ListView.builder(
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(10),
           itemCount: entries.length,
           itemBuilder: (BuildContext context, int index) {
             // ignore: prefer_const_constructors

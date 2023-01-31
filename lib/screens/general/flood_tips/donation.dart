@@ -1,28 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutterui/screens/widgets/bottom_menu.dart';
 import 'package:flutterui/screens/widgets/home_button.dart';
+import 'package:flutterui/screens/widgets/carousel.dart';
 
-class PreFloodTips extends StatelessWidget {
-  const PreFloodTips({super.key});
+class DonationPage extends StatefulWidget {
+  const DonationPage({super.key});
 
+  @override
+  State<DonationPage> createState() => _DonationPageState();
+}
+
+class _DonationPageState extends State<DonationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tips Before Flood'),
+        title: const Text('Donation Page'),
       ),
       body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/preflood_guide.png"),
-                fit: BoxFit.cover)),
-        padding: EdgeInsets.only(top: 50.0),
+        child: CustomCarouselFB2(),
       ),
-
-      // Contents PlaceHolder
-
       bottomNavigationBar: MyBottomMenuNavigationBar(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: MyHomeButton(),

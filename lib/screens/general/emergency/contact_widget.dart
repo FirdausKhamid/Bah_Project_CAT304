@@ -26,10 +26,14 @@ class _ContactTileState extends State<ContactTile> {
   Widget build(BuildContext context) {
     print(widget.imgUrl);
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+      padding: const EdgeInsets.fromLTRB(0, 0, 0, 5),
       child: InkWell(
         child: ListTile(
           tileColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            side: BorderSide(width: 2),
+            borderRadius: BorderRadius.circular(15),
+          ),
           contentPadding: EdgeInsets.all(3),
           leading: Container(
             width: 50,

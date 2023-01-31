@@ -17,23 +17,23 @@ class WaterLevel extends StatefulWidget {
 }
 
 class _WaterLevelState extends State<WaterLevel> {
-  final _pointOfInterestController = TextEditingController();
-  List<String> _pointsOfInterest = [];
   @override
   Widget build(BuildContext context) {
     // print(ref);
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text('Water Level'),
+      ),
       backgroundColor: const Color.fromRGBO(1, 39, 72, 1.0),
 
       body: Center(
           child: Column(
         children: [
           const Expanded(
-            flex: 2,
+            flex: 0,
             child: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text('Water Level',
+              padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+              child: Text('',
                   textScaleFactor: 2,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -42,7 +42,7 @@ class _WaterLevelState extends State<WaterLevel> {
             ),
           ),
           Expanded(
-            flex: 4,
+            flex: 2,
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
               child: InkWell(
@@ -54,7 +54,7 @@ class _WaterLevelState extends State<WaterLevel> {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 200, 0, 0),
+                      color: Color.fromARGB(255, 155, 23, 23),
                       borderRadius: BorderRadius.circular(15)),
                   child: Row(
                     children: [
@@ -80,7 +80,7 @@ class _WaterLevelState extends State<WaterLevel> {
             ),
           ),
           Expanded(
-            flex: 4,
+            flex: 2,
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
               child: InkWell(
@@ -93,7 +93,7 @@ class _WaterLevelState extends State<WaterLevel> {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 211, 81, 0),
+                      color: Color.fromARGB(255, 181, 82, 21),
                       borderRadius: BorderRadius.circular(15)),
                   child: Row(
                     children: [
@@ -119,7 +119,7 @@ class _WaterLevelState extends State<WaterLevel> {
             ),
           ),
           Expanded(
-            flex: 4,
+            flex: 2,
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
               child: InkWell(
@@ -131,7 +131,7 @@ class _WaterLevelState extends State<WaterLevel> {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 237, 233, 0),
+                      color: Color.fromARGB(255, 213, 210, 43),
                       borderRadius: BorderRadius.circular(15)),
                   child: Row(
                     children: [
@@ -157,7 +157,7 @@ class _WaterLevelState extends State<WaterLevel> {
             ),
           ),
           Expanded(
-            flex: 4,
+            flex: 2,
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
               child: InkWell(
@@ -169,7 +169,7 @@ class _WaterLevelState extends State<WaterLevel> {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 8, 177, 8),
+                      color: Color.fromARGB(255, 43, 185, 43),
                       borderRadius: BorderRadius.circular(15)),
                   child: Row(
                     children: [
@@ -195,7 +195,7 @@ class _WaterLevelState extends State<WaterLevel> {
             ),
           ),
           Expanded(
-            flex: 4,
+            flex: 2,
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
               child: InkWell(
@@ -207,7 +207,7 @@ class _WaterLevelState extends State<WaterLevel> {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 48, 197, 199),
+                      color: Color.fromARGB(255, 40, 168, 170),
                       borderRadius: BorderRadius.circular(15)),
                   child: Row(
                     children: [
@@ -233,7 +233,7 @@ class _WaterLevelState extends State<WaterLevel> {
             ),
           ),
           Expanded(
-            flex: 4,
+            flex: 2,
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
               child: InkWell(
@@ -259,6 +259,39 @@ class _WaterLevelState extends State<WaterLevel> {
                       const Padding(
                         padding: EdgeInsets.fromLTRB(20, 8, 8, 8),
                         child: Text('POI',
+                            textScaleFactor: 2,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            )),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 2,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+              child: InkWell(
+                onTap: () {},
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Color.fromRGBO(1, 39, 72, 1.0),
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Image.asset(
+                          'assets/communityicon.png',
+                          width: 0,
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.fromLTRB(20, 8, 8, 8),
+                        child: Text('',
                             textScaleFactor: 2,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,

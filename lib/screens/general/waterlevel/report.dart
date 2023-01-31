@@ -23,7 +23,7 @@ class _ReportListState extends State<ReportList> {
     return Scaffold(
       appBar: AppBar(
           title: const Text(
-            "Community Page",
+            "Report",
           ),
           actions: [
             IconButton(
@@ -36,9 +36,6 @@ class _ReportListState extends State<ReportList> {
               },
             )
           ]),
-
-      // Contents Placeholder
-
       body: Column(
         children: [
           Padding(
@@ -47,7 +44,7 @@ class _ReportListState extends State<ReportList> {
                 child: Column(
               children: [
                 SizedBox(
-                  height: 500,
+                  height: (MediaQuery.of(context).size.height) - 152,
                   child: Container(
                     child: FirebaseAnimatedList(
                       query: dbRef,
@@ -66,7 +63,6 @@ class _ReportListState extends State<ReportList> {
           )
         ],
       ),
-
       bottomNavigationBar: MyBottomMenuNavigationBar(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: MyHomeButton(),
@@ -116,8 +112,8 @@ class _ReportListState extends State<ReportList> {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
             gradient: const LinearGradient(colors: [
-              Color.fromARGB(255, 0, 0, 0),
-              Color.fromARGB(255, 116, 9, 9)
+              Color.fromARGB(255, 20, 131, 183),
+              Color.fromARGB(255, 5, 79, 114)
             ])),
         child: Stack(
           children: [

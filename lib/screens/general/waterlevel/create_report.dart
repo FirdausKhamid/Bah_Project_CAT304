@@ -169,6 +169,27 @@ class _CreateReportState extends State<CreateReport> {
     final ref = referenceDatabase.ref('Report');
     String imageUrl = '';
 
+    Widget okButton = TextButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Thank you"),
+      content: Text("Your report is succesfully posted."),
+      actions: [
+        TextButton(
+          child: Text("OK"),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        )
+      ],
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Post Report'),
@@ -218,7 +239,7 @@ class _CreateReportState extends State<CreateReport> {
                         _getCurrentPosition();
                         print('ADDRESS: ${_currentAddress ?? ""}');
                       },
-                      child: Text('ADDRESS: ${_currentAddress ?? ""}'),
+                      child: Text('Get Location'),
                     )),
 
                 ElevatedButton(
@@ -288,7 +309,7 @@ class _CreateReportState extends State<CreateReport> {
                         print('No Image Path Received');
                       }
 
-                      Map<String, String> students = {
+                      Map<String, String> reportdata = {
                         'description': descController.text,
                         'location': _currentAddress.toString(),
                         'date': DateFormat.yMd()
@@ -298,12 +319,29 @@ class _CreateReportState extends State<CreateReport> {
                         'title': reportTitleController.text,
                         'img': imageUrl,
                       };
-                      ref.push().set(students);
+                      ref.push().set(reportdata);
                       descController.clear();
                       //_currentAddress.clear();
                       dateController.clear();
                       reportTitleController.clear();
                       Navigator.of(context).pop();
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return (AlertDialog(
+                              title: Text("Thank you"),
+                              content:
+                                  Text("Your report is succesfully posted."),
+                              actions: [
+                                TextButton(
+                                  child: Text("OK"),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                )
+                              ],
+                            ));
+                          });
                     },
                   ),
                 ),

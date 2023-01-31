@@ -11,9 +11,15 @@ class PostFloodTips extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Tips Post Flood'),
       ),
-
-      // Contents Placeholder
-
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/postflood_guide.png"),
+                fit: BoxFit.cover)),
+        padding: EdgeInsets.only(top: 50.0),
+      ),
       bottomNavigationBar: MyBottomMenuNavigationBar(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: MyHomeButton(),
