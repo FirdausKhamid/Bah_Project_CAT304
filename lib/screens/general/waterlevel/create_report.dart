@@ -1,7 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
-import 'package:geocoder/geocoder.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:flutterui/screens/general/waterlevel/location_model.dart';
 import 'package:flutterui/screens/widgets/gradient_button.dart';
 import 'package:flutterui/screens/general/waterlevel/location_page.dart';
@@ -40,7 +40,7 @@ class _CreateReportState extends State<CreateReport> {
   // String locationMessage = 'Set Location';
   late String lat;
   late String long;
-  List<Address> addresses = [];
+  List<Placemark> placemarks = [];
   String tempString = '';
   String locationMessage = 'Set Location';
   String? _currentAddress = 'No Location yet';
